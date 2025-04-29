@@ -2,6 +2,7 @@
 
 
 require_once 'classes/Database.php';
+require_once 'classes/FilmRepository.php';
 
 
 $filmRepo = new FilmRepository();
