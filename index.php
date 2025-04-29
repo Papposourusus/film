@@ -1,13 +1,12 @@
 <?php
-// index.php
+
 
 require_once 'classes/Database.php';
-require_once 'classes/Film.php';
-require_once 'classes/FilmRepository.php';
+
 
 $filmRepo = new FilmRepository();
 
-// Ak je nastavený parameter film_id, načítame jeden film; inak načítame všetky filmy
+
 if (isset($_GET['film_id'])) {
     $filmId = (int) $_GET['film_id'];
     $film = $filmRepo->get($filmId);
@@ -31,13 +30,13 @@ if (isset($_GET['film_id'])) {
         <nav>
             <ul>
                 <li><a href="index.php">Domov</a></li>
-                <!-- Ak by bolo potrebné pridať ďalšie odkazy, uveď ich sem -->
+                
             </ul>
         </nav>
     </header>
     <main>
         <?php if (isset($film) && $film !== null): ?>
-            <!-- Detailná stránka filmu: tu sa zobrazia podrobnosti, vrátane dĺžky filmu -->
+         
             <section class="film-detail">
                 <h2><?php echo htmlspecialchars($film->title); ?></h2>
                 <img src="<?php echo htmlspecialchars($film->image); ?>" alt="Obrázok filmu <?php echo htmlspecialchars($film->title); ?>" class="film-image">
@@ -51,7 +50,7 @@ if (isset($_GET['film_id'])) {
                 </p>
             </section>
         <?php else: ?>
-            <!-- Zoznam filmov: tu sa zobrazia len názvy s tlačidlom pre zobrazenie detailov -->
+            
             <section class="film-list">
                 <h2>Zoznam filmov</h2>
                 <?php if (isset($films) && count($films) > 0): ?>
