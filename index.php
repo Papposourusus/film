@@ -1,4 +1,5 @@
 <?php
+// index.php
 
 require_once 'classes/Database.php';
 require_once 'classes/Film.php';
@@ -6,6 +7,7 @@ require_once 'classes/FilmRepository.php';
 
 $filmRepo = new FilmRepository();
 
+// Ak je nastavený parameter film_id, načítame jeden film; inak načítame všetky filmy
 if (isset($_GET['film_id'])) {
     $filmId = (int) $_GET['film_id'];
     $film = $filmRepo->get($filmId);
@@ -29,22 +31,24 @@ if (isset($_GET['film_id'])) {
         <nav>
             <ul>
                 <li><a href="index.php">Domov</a></li>
-                
+                <!-- Tu môžeš pridať ďalšie odkazy -->
             </ul>
         </nav>
     </header>
     <main>
         <?php if (isset($film) && $film !== null): ?>
-            
+            <!-- Detailná stránka filmu -->
             <section class="film-detail">
                 <h2><?php echo htmlspecialchars($film->title); ?></h2>
-                <img src="<?php echo htmlspecialchars($film->image); ?>" alt="Obrázok filmu <?php echo htmlspecialchars($film->title); ?>" style="max-width:300px;">
+                <img src="<?php echo htmlspecialchars($film->image); ?>" alt="Obrázok filmu <?php echo htmlspecialchars($film->title); ?>" class="film-image">
                 <p><strong>Dĺžka:</strong> <?php echo htmlspecialchars($film->duration); ?> minút</p>
                 <div class="film-description">
                     <h3>Popis:</h3>
                     <p><?php echo nl2br(htmlspecialchars($film->description)); ?></p>
                 </div>
-                <p><a href="index.php">Späť na zoznam filmov</a></p>
+                <p>
+                    <button class="btn" onclick="window.location.href='index.php'">Späť na zoznam filmov</button>
+                </p>
             </section>
         <?php else: ?>
             <!-- Zoznam filmov -->
@@ -54,10 +58,16 @@ if (isset($_GET['film_id'])) {
                     <ul>
                         <?php foreach ($films as $filmItem): ?>
                             <li>
-                                <strong><?php echo htmlspecialchars($filmItem->title); ?></strong>
-                                (<?php echo htmlspecialchars($filmItem->duration); ?> min)
-                                <!-- Link vedie na index.php s parametrom film_id -->
-                                <a href="index.php?film_id=<?php echo htmlspecialchars($filmItem->id); ?>">Zobraziť detaily</a>
+                                <div class="film-info">
+                                    <strong><?php echo htmlspecialchars($filmItem->title); ?></strong>
+                                    (<?php echo htmlspecialchars($filmItem->duration); ?> min)
+                                </div>
+                                <!-- Tlačidlo pre zobrazenie detailov filmu -->
+                                <div class="film-action">
+                                    <button class="btn" onclick="window.location.href='index.php?film_id=<?php echo htmlspecialchars($filmItem->id); ?>'">
+                                        Zobraziť detaily
+                                    </button>
+                                </div>
                             </li>
                         <?php endforeach; ?>
                     </ul>
