@@ -1,5 +1,5 @@
 <?php
-// manage_films.php
+
 
 require_once 'classes/Database.php';
 require_once 'classes/FilmRepository.php';
@@ -20,8 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($title === '') {
                 $message = 'Názov filmu je povinný!';
             } else {
-                // Predpokladáme, že načítanie triedy Film prebehlo v rámci FilmRepository,
-                // alebo ju načítaš iným spôsobom
+             s
                 $film = new Film(null, $title, $description, $duration, $image);
                 $newId = $filmRepo->create($film);
                 $message = 'Film bol pridaný s ID: ' . $newId;
