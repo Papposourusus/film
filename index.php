@@ -31,13 +31,13 @@ if (isset($_GET['film_id'])) {
         <nav>
             <ul>
                 <li><a href="index.php">Domov</a></li>
-                <!-- Tu môžeš pridať ďalšie odkazy -->
+                <!-- Ak by bolo potrebné pridať ďalšie odkazy, uveď ich sem -->
             </ul>
         </nav>
     </header>
     <main>
         <?php if (isset($film) && $film !== null): ?>
-            <!-- Detailná stránka filmu -->
+            <!-- Detailná stránka filmu: tu sa zobrazia podrobnosti, vrátane dĺžky filmu -->
             <section class="film-detail">
                 <h2><?php echo htmlspecialchars($film->title); ?></h2>
                 <img src="<?php echo htmlspecialchars($film->image); ?>" alt="Obrázok filmu <?php echo htmlspecialchars($film->title); ?>" class="film-image">
@@ -51,7 +51,7 @@ if (isset($_GET['film_id'])) {
                 </p>
             </section>
         <?php else: ?>
-            <!-- Zoznam filmov -->
+            <!-- Zoznam filmov: tu sa zobrazia len názvy s tlačidlom pre zobrazenie detailov -->
             <section class="film-list">
                 <h2>Zoznam filmov</h2>
                 <?php if (isset($films) && count($films) > 0): ?>
@@ -60,9 +60,7 @@ if (isset($_GET['film_id'])) {
                             <li>
                                 <div class="film-info">
                                     <strong><?php echo htmlspecialchars($filmItem->title); ?></strong>
-                                    (<?php echo htmlspecialchars($filmItem->duration); ?> min)
                                 </div>
-                                <!-- Tlačidlo pre zobrazenie detailov filmu -->
                                 <div class="film-action">
                                     <button class="btn" onclick="window.location.href='index.php?film_id=<?php echo htmlspecialchars($filmItem->id); ?>'">
                                         Zobraziť detaily
