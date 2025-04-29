@@ -27,7 +27,7 @@ if (isset($_GET['film_id'])) {
 </head>
 <body>
     <header>
-        <h1>Filmové Filmy</h1>
+        <h1>Filmový Marathón</h1>
         <nav>
             <ul>
                 <li><a href="index.php">Domov</a></li>
