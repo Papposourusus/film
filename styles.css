@@ -298,3 +298,162 @@ footer {
     transform: translateY(0);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+
+
+/* Reset a základné nastavenia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+    color: #333;
+    padding-bottom: 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #7e57c2, #673ab7);
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Hlavný obsah */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Správa hlásení */
+.message {
+    background: #d1c4e9;
+    color: #4a148c;
+    border: 1px solid #4a148c;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+/* Sekcie pre formulár a zoznam filmov */
+.film-add, .film-list {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.film-add h2, .film-list h2 {
+    color: #5e35b1;
+    margin-bottom: 20px;
+}
+
+/* Formulár */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #424242;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Moderné tlačidlá */
+.btn {
+    background: linear-gradient(45deg, #8e24aa, #d81b60);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Výpis filmov */
+.film-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.film-list li {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.film-list li:last-of-type {
+    border-bottom: none;
+}
+
+.film-info {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #3e2723;
+}
+
+.film-action {
+    display: flex;
+    gap: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #eeeeee;
+    color: #555;
+    margin-top: 30px;
+}
