@@ -31,7 +31,7 @@ if (isset($_GET['film_id'])) {
         <nav>
             <ul>
                 <li><a href="index.php">Domov</a></li>
-                
+                <li><a href="manage_films.php">Pridanie/Odstránenie Filmov</a></li>
             </ul>
         </nav>
     </header>
