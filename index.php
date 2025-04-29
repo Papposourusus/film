@@ -1,11 +1,9 @@
 <?php
-// index.php
 
-// Definujeme jednoduchú triedu pre filmový maratón
 class Marathon {
     public $id;
     public $name;
-    public $date; // dátum maratónu
+    public $date; 
 
     public function __construct($id, $name, $date) {
         $this->id = $id;
@@ -14,7 +12,7 @@ class Marathon {
     }
 }
 
-// Vytvoríme pole s niekoľkými vzorovými maratóny
+
 $marathons = [
     new Marathon(1, 'Filmový maratón Akčné Filmy', '2025-05-10'),
     new Marathon(2, 'Kultové Klasiky na noc', '2025-06-15'),
@@ -28,9 +26,9 @@ $marathons = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmové Maratóny</title>
-    <!-- Link na externý CSS súbor -->
+    
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts pre moderný vzhľad -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
