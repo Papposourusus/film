@@ -64,7 +64,7 @@ $films = $filmRepo->getAll();
                 <?php echo htmlspecialchars($message); ?>
             </div>
         <?php endif; ?>
-
+ň
         <section class="film-add">
             <h2>Pridať nový film</h2>
             <form action="manage_films.php" method="post">
@@ -90,11 +90,34 @@ $films = $filmRepo->getAll();
         </section>
 
       
-       
-
-
-
-        
+        <section class="film-list">
+            <h2>Zoznam filmov</h2>
+            <?php if (count($films) > 0): ?>
+                <ul>
+                    <?php foreach ($films as $filmItem): ?>
+                        <li>
+                            <div class="film-info">
+                                <strong><?php echo htmlspecialchars($filmItem->title); ?></strong>
+                            </div>
+                            <div class="film-action">
+                                
+                                <button class="btn" onclick="window.location.href='index.php?film_id=<?php echo htmlspecialchars($filmItem->id); ?>'">
+                                    Zobraziť detaily
+                                </button>
+                                
+                                <form action="manage_films.php" method="post" onsubmit="return confirm('Ste si istý, že chcete vymazať tento film?');" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="film_id" value="<?php echo htmlspecialchars($filmItem->id); ?>">
+                                    <button class="btn" type="submit">Vymazať</button>
+                                </form>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Žiadne filmy zatiaľ neboli pridané.</p>
+            <?php endif; ?>
+        </section>
     </main>
     <footer>
         <p>&copy; 2025 Filmový Maratón systém</p>
