@@ -61,7 +61,7 @@ $films = $filmRepo->getAll();
                                     <input type="hidden" name="film_id" value="<?php echo htmlspecialchars($filmItem->id); ?>">
                                     <label>
                                         <input type="checkbox" name="watched" <?php if ($filmItem->watched == 1) echo 'checked'; ?> onchange="this.form.submit();">
-                                        Sledované
+                                        Pozreté
                                     </label>
                                 </form>
                             </div>
