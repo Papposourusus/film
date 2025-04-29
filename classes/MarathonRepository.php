@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Database.php';
-require_once 'Marathon.php';
+require_once 'classes/Database.php';
+require_once 'classes/Marathon.php';
 
 class MarathonRepository {
     private $conn;
