@@ -1,8 +1,9 @@
 <?php
 
 
-require_once 'Database.php';
-require_once 'Film.php';
+require_once 'classes/Database.php';
+require_once 'classes/Film.php';
+
 
 class FilmRepository {
     private $conn;

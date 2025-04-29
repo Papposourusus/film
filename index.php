@@ -1,58 +1,71 @@
 <?php
-// index.php
 
-// Načítanie repozitára, ktorý zabezpečuje prácu s maratóny
-require_once 'classes/MarathonRepository.php';
+require_once 'classes/Database.php';
+require_once 'classes/Film.php';
+require_once 'classes/FilmRepository.php';
 
-$marathonRepo = new MarathonRepository();
-$marathons = $marathonRepo->getAll();
+$filmRepo = new FilmRepository();
+
+if (isset($_GET['film_id'])) {
+    $filmId = (int) $_GET['film_id'];
+    $film = $filmRepo->get($filmId);
+} else {
+    $films = $filmRepo->getAll();
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmové Maratóny</title>
-    <!-- Link na externý CSS súbor -->
+    <title>Filmové Filmy</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Google Fonts pre moderný vzhľad -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Filmové Maratóny</h1>
+        <h1>Filmové Filmy</h1>
         <nav>
             <ul>
                 <li><a href="index.php">Domov</a></li>
-                <li><a href="films.php">Filmy</a></li>
-                <li><a href="marathons.php">Maratóny</a></li>
-                <li><a href="add_marathon.php">Pridať Maratón</a></li>
-                <li><a href="add_film.php">Pridať Film</a></li>
+                
             </ul>
         </nav>
     </header>
     <main>
-        <section>
-            <h2>Aktuálne filmové maratóny</h2>
-            <?php if (count($marathons) > 0): ?>
-                <ul class="marathon-list">
-                    <?php foreach ($marathons as $marathon): ?>
-                        <li>
-                            <div class="marathon-info">
-                                <strong><?php echo htmlspecialchars($marathon->name); ?></strong>
-                                <span class="marathon-date">&ndash; <?php echo htmlspecialchars($marathon->date); ?></span>
-                            </div>
-                            <div class="marathon-action">
-                                <a href="marathon_detail.php?id=<?php echo htmlspecialchars($marathon->id); ?>">Zobraziť detaily</a>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <p>Žiadne maratóny zatiaľ neboli pridané.</p>
-            <?php endif; ?>
-        </section>
+        <?php if (isset($film) && $film !== null): ?>
+            
+            <section class="film-detail">
+                <h2><?php echo htmlspecialchars($film->title); ?></h2>
+                <img src="<?php echo htmlspecialchars($film->image); ?>" alt="Obrázok filmu <?php echo htmlspecialchars($film->title); ?>" style="max-width:300px;">
+                <p><strong>Dĺžka:</strong> <?php echo htmlspecialchars($film->duration); ?> minút</p>
+                <div class="film-description">
+                    <h3>Popis:</h3>
+                    <p><?php echo nl2br(htmlspecialchars($film->description)); ?></p>
+                </div>
+                <p><a href="index.php">Späť na zoznam filmov</a></p>
+            </section>
+        <?php else: ?>
+            <!-- Zoznam filmov -->
+            <section class="film-list">
+                <h2>Zoznam filmov</h2>
+                <?php if (isset($films) && count($films) > 0): ?>
+                    <ul>
+                        <?php foreach ($films as $filmItem): ?>
+                            <li>
+                                <strong><?php echo htmlspecialchars($filmItem->title); ?></strong>
+                                (<?php echo htmlspecialchars($filmItem->duration); ?> min)
+                                <!-- Link vedie na index.php s parametrom film_id -->
+                                <a href="index.php?film_id=<?php echo htmlspecialchars($filmItem->id); ?>">Zobraziť detaily</a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>Žiadne filmy zatiaľ neboli pridané.</p>
+                <?php endif; ?>
+            </section>
+        <?php endif; ?>
     </main>
     <footer>
         <p>&copy; 2025 Filmový Maratón systém</p>
