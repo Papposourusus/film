@@ -1,0 +1,117 @@
+/* Reset štýly */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f3f2f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #7e57c2, #673ab7);
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #d1c4e9;
+}
+
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    color: #5e35b1;
+}
+
+ul.marathon-list {
+    list-style: none;
+}
+
+ul.marathon-list li {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+ul.marathon-list li:hover {
+    background: #f3e5f5;
+}
+
+ul.marathon-list li:last-child {
+    border-bottom: none;
+}
+
+.marathon-info strong {
+    font-size: 1.1rem;
+    color: #4a148c;
+}
+
+.marathon-date {
+    color: #6a1b9a;
+}
+
+.marathon-action a {
+    background: #7e57c2;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.marathon-action a:hover {
+    background: #673ab7;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #eeeeee;
+    margin-top: 40px;
+    color: #555;
+}
