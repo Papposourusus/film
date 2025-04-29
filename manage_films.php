@@ -1,9 +1,8 @@
 <?php
-
+// manage_films.php
 
 require_once 'classes/Database.php';
 require_once 'classes/FilmRepository.php';
-
 
 $filmRepo = new FilmRepository();
 $message = '';
@@ -21,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($title === '') {
                 $message = 'Názov filmu je povinný!';
             } else {
+                // Predpokladáme, že načítanie triedy Film prebehlo v rámci FilmRepository,
+                // alebo ju načítaš iným spôsobom
                 $film = new Film(null, $title, $description, $duration, $image);
                 $newId = $filmRepo->create($film);
                 $message = 'Film bol pridaný s ID: ' . $newId;
@@ -45,7 +46,6 @@ $films = $filmRepo->getAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Správa Filmov</title>
     <link rel="stylesheet" href="styles.css">
-    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -54,7 +54,6 @@ $films = $filmRepo->getAll();
         <nav>
             <ul>
                 <li><a href="index.php">Domov</a></li>
-                
             </ul>
         </nav>
     </header>
@@ -64,7 +63,7 @@ $films = $filmRepo->getAll();
                 <?php echo htmlspecialchars($message); ?>
             </div>
         <?php endif; ?>
-ň
+
         <section class="film-add">
             <h2>Pridať nový film</h2>
             <form action="manage_films.php" method="post">
@@ -89,7 +88,6 @@ $films = $filmRepo->getAll();
             </form>
         </section>
 
-      
         <section class="film-list">
             <h2>Zoznam filmov</h2>
             <?php if (count($films) > 0): ?>
@@ -100,11 +98,7 @@ $films = $filmRepo->getAll();
                                 <strong><?php echo htmlspecialchars($filmItem->title); ?></strong>
                             </div>
                             <div class="film-action">
-                                
-                                <button class="btn" onclick="window.location.href='index.php?film_id=<?php echo htmlspecialchars($filmItem->id); ?>'">
-                                    Zobraziť detaily
-                                </button>
-                                
+                               
                                 <form action="manage_films.php" method="post" onsubmit="return confirm('Ste si istý, že chcete vymazať tento film?');" style="display:inline;">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="film_id" value="<?php echo htmlspecialchars($filmItem->id); ?>">
